@@ -1,26 +1,14 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.6-eclipse-temurin-11-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
+    agent any
+    environment {
+        secret = credentials('TEST')
     }
     stages {
-        stage('Build') {
+        stage('Example stage 1') {
             steps {
-                sh ' cd java-app && mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') {
-            steps {
+                sh 'echo $secret'
                 sh 'docker --version'
             }
-            //  post {
-            //     always {
-            //         junit ' cd java-app && target/surefire-reports/*.xml'
-            //     }
-            // }
         }
-
     }
 }
