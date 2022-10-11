@@ -13,13 +13,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd java-app && mvn test'
+                sh 'docker --version'
             }
-             post {
-                always {
-                    junit ' cd java-app && target/surefire-reports/*.xml'
-                }
-            }
+            //  post {
+            //     always {
+            //         junit ' cd java-app && target/surefire-reports/*.xml'
+            //     }
+            // }
         }
 
     }
