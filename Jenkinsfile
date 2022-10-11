@@ -13,7 +13,12 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd java-app && mvn test'
+                sh ' mvn test'
+            }
+             post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
 
