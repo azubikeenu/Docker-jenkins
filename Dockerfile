@@ -1,6 +1,6 @@
 FROM jenkins/jenkins:lts-jdk11
 USER root
-# Install Docker
+# UNSTALL DOCKER
 RUN apt-get update && \
 apt-get -y install apt-transport-https \
      ca-certificates \
@@ -15,8 +15,7 @@ add-apt-repository \
 apt-get update && \
 apt-get -y install docker-ce
 
-# Compose
-
+# GET COMPOSE
 RUN curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
 
 #On a linux-based host machine apply these permission settings
