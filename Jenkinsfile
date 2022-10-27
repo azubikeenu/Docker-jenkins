@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Check Docker version') {
             steps {
-                sh 'docker --info'
+                sh 'docker info'
             }
         }
 
