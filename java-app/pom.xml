@@ -188,6 +188,7 @@
             </plugin>
 
         </plugins>
+        <finalName> docker-jenkins</finalName>
     </build>
     <reporting>
         <plugins>
