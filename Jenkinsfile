@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'cd java-app && docker build -t jenkins-docker .'
+                sh 'cd java-app && ls '
             }
         }
 
