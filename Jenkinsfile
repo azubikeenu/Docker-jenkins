@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Check Docker version') {
             steps {
+                echo "My first pipeline"
                 sh 'docker --info'
             }
         }
