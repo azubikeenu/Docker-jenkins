@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd java-app  && mvn -B -DskipTests clean package'
+                sh 'cd java-app  && mvn -B -DskipTests clean install package'
             }
         }
         stage('Build Image') {
