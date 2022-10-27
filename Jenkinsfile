@@ -9,10 +9,9 @@ pipeline {
                 sh 'cd java-app  && mvn -B -DskipTests clean package'
             }
         }
-        stage('Check Docker version') {
+        stage('Build Image') {
             steps {
-                sh 'docker info'
-                sh 'echo $PWD'
+                sh 'cd java-app && docker build -t jenkins-docker .'
             }
         }
 
