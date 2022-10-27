@@ -1,5 +1,7 @@
 FROM openjdk:11
 
-COPY target/*.jar myapp.jar
+RUN mkdir /app
 
-ENTRYPOINT ["java","-jar","/myapp.jar"]
+COPY target/*.jar /app/myapp.jar
+
+ENTRYPOINT ["java","-jar", "/app/myapp.jar"]
