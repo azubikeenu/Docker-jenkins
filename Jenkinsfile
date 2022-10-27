@@ -3,12 +3,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './mvn.sh -B -DskipTests clean package'
+                sh 'docker run --rm  -v  ./java-app:/app -v /root/.m2/:/root/.m2/ -w /app maven:3-alpine -B -DskipTests clean package'
             }
         }
         stage('Check Docker version') {
             steps {
-                echo "My first pipeline"
                 sh 'docker --info'
             }
         }
