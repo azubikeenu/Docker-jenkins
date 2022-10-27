@@ -11,9 +11,9 @@ pipeline {
                 sh ' cd java-app && mvn -B -DskipTests clean package'
             }
         }
-        stage('Test') {
+        stage('Check Docker version') {
             steps {
-                sh 'cd java-app && mvn test'
+                sh 'docker --info'
             }
         }
 
