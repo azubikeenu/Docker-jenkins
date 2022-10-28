@@ -1,4 +1,0 @@
-#!/bin/bash/
-# Copy the jar to the new location
-cp -f java-app/target/*.jar jenkins/build
-cd jenkins/build && docker-compose -f docker-compose-build.yml build --no-cache

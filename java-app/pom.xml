@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.azubike</groupId>
-    <artifactId>m2-tests</artifactId>
+    <artifactId>docker-jenkins</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <junit.version>5.8.2</junit.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -187,21 +187,22 @@
                 </executions>
             </plugin>
             <plugin>
-            <!-- Build an executable JAR -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
             <version>3.3.0</version>
             <configuration>
                 <archive>
                     <manifest>
+                     <addClasspath>true</addClasspath>
+                     <classpathPrefix>lib/</classpathPrefix>
                         <mainClass>com.azubike.ellpisis.TestClass</mainClass>
                     </manifest>
                 </archive>
             </configuration>
         </plugin>
 
+
         </plugins>
-        <finalName> docker-jenkins</finalName>
     </build>
     <reporting>
         <plugins>

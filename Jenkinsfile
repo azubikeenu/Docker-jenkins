@@ -1,17 +1,27 @@
 pipeline {
    agent any
-     tools {
-        maven 'jenkins-maven'
-    }
     stages {
         stage('Build') {
             steps {
-                sh 'cd java-app  && mvn -B -DskipTests clean install package'
+               sh '''
+                    /jenkins/build/mvn.sh mvn -B -DskipTests clean package
+                    /jenkins/build/build.sh
+                  '''
             }
         }
-        stage('Build Image') {
+        stage('Testing') {
             steps {
-                sh 'cd java-app && docker build -t jenkins-docker .'
+                sh './jenkins/test/mvn.sh mvn test'
+            }
+        }
+        stage ('Push'){
+            steps {
+               sh './jenkins/push/push.sh'
+            }
+        }
+        stage ('Deploy'){
+            steps {
+                sh 'echo deploying '
             }
         }
 
